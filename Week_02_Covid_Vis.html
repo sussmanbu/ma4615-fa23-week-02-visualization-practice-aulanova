@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="[[Your Name]]">
+<meta name="author" content="Aiganysh Ulanova">
 <meta name="dcterms.date" content="2023-09-11">
 
 <title>Week 02: COVID Visualization Activity</title>
@@ -120,7 +120,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p><strong><code>[[</code></strong>Your Name<strong><code>]]</code></strong> </p>
+             <p>Aiganysh Ulanova </p>
           </div>
   </div>
     
@@ -192,16 +192,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>For this particular graph above, I see how the “Deaths” count is the highest in abundance and grows at the quickest rate for the race “White”, which makes sense as proportionally, this race has the largest population in Massachusetts. The abundance and growth rate for the “Deaths” count is very similar for all other races (excluding “White)”. It is interesting to note how for all races (although you can see this the most clearly for the “White” race), there is a huge increase in the rate for the “Deaths” count around the May - June area. You can clearly see the straight “up” slope for the “White” race (a rapid spike). This is most likely when the height of the pandemic was happening and when the “Cases” count grew rapidly as well (although this needs to be verified by looking more closely at the data).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># writing code that looks at a plot of deaths and cases simultaneously for a specific race in a specific state</span></span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Attempt #2: Plot of deaths and cases simultaneously for "White" race in MA</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>covid_data_count <span class="sc">|&gt;</span> </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"MA"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(race <span class="sc">==</span> <span class="st">"White"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>Cases), <span class="at">color=</span> <span class="st">"black"</span>) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>Deaths), <span class="at">color=</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"count"</span>, <span class="at">title =</span> <span class="st">"Cases and Deaths for the White population in MA"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>Cases), <span class="at">color=</span> <span class="st">"black"</span>) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>Deaths), <span class="at">color=</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"count"</span>, <span class="at">title =</span> <span class="st">"Cases and Deaths count for the White population in MA"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Week_02_Covid_Vis_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>``` 2. Are there any conclusions you can draw? It’s quite challening to draw conclusions from a singular graph. But we can see how in the time frame from Oct - Feburary, the rate of growth for cases grew at a much quicker rate than the rate of deaths. 3. What were you not able to do due to not having the R knowledge? I wanted to plot barcharts where each bar would represent a race and the y-axis would be a proportion of the population that has gotten COVID. 4. What other data would be useful to better understand this data? Another data that would be useful is to look at the data for recoveries. Having the recovery count would be helpful to understand how the rate of recoveries compares to rate of growth for cases and deaths.</p>
+<p>``` 2. Are there any conclusions you can draw? It’s quite challenging to draw conclusions from a singular graph. But we can see how in the time frame from Oct - February, the rate of growth for cases grew at a much quicker rate than the rate of deaths. The rates were fairly comparable from April- May, but then they started to drastically differ.</p>
+<ol start="3" type="1">
+<li><p>What were you not able to do due to not having the R knowledge? I wanted to plot barcharts where each bar would represent a race and the y-axis would be a proportion of the population that has gotten COVID or the proportion of the population that has died from COVID-19. However, at the time of writing I do not have the R knowledge for this.</p></li>
+<li><p>What other data would be useful to better understand this data? Another data that would be useful is to look at the data for recoveries. Having the recovery count would be helpful to understand how the rate of recoveries compares to rate of growth for cases and deaths.</p></li>
+</ol>
 
 </main>
 <!-- /main column -->
