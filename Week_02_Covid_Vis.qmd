@@ -12,8 +12,6 @@ Note, due to differences in the way race and ethnicity are encoded in the census
 ```{r load_data}
 library(tidyverse)
 load("CRDT Data.RData")
-covid_data_count
-
 ls()
 ```
 
@@ -53,14 +51,14 @@ For this particular graph above, I see how the "Deaths" count is the highest in 
 covid_data_count |> 
   filter(state == "MA") |> 
   filter(race == "White") |>
-  ggplot(aes(x = date)) + geom_line(aes(y=Cases), color= "black") + geom_line(aes(y=Deaths), color= "red") + labs(y="count") + 
+  ggplot(aes(x = date)) + geom_line(aes(y=Cases), color= "black") + geom_line(aes(y=Deaths), color= "red") + labs(y="count", title = "Cases and Deaths for the White population in MA") 
 
 ```
 ```
 2. Are there any conclusions you can draw?
-It's quite challening to draw ...
+It's quite challening to draw conclusions from a singular graph. But we can see how in the time frame from Oct - Feburary, the rate of growth for cases grew at a much quicker rate than the rate of deaths. 
 3. What were you not able to do due to not having the R knowledge?
-I was not able to
+I wanted to plot barcharts where each bar would represent a race and the y-axis would be a proportion of the population that has gotten COVID. 
 4. What other data would be useful to better understand this data?
-
+Another data that would be useful is to look at the data for recoveries. Having the recovery count would be helpful to understand how the rate of recoveries compares to rate of growth for cases and deaths.
 
