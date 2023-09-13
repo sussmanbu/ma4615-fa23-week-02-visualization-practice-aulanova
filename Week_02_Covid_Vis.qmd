@@ -12,6 +12,8 @@ Note, due to differences in the way race and ethnicity are encoded in the census
 ```{r load_data}
 library(tidyverse)
 load("CRDT Data.RData")
+covid_data_count
+
 ls()
 ```
 
@@ -36,6 +38,29 @@ covid_data_count |>
 ```
 
 1. Write code for a plot and describe what you observe?
+```{r}
+# Attempt 1: Plotting deaths against date, colored by race, only for the state of Massachusetts
+
+covid_data_count |> 
+  filter(state == "MA") |> 
+  ggplot(aes(x = date, y = Deaths, color = race)) + geom_line()
+
+```
+For this particular graph above, I see how the "Deaths" count is the highest in abundance and grows at the quickest rate for the race "White", which makes sense as proportionally, this race has the largest population in Massachusetts. The abundance and growth rate for the "Deaths" count is very similar for all other races (excluding "White)". It is interesting to note how for all races (although you can see this the most clearly for the "White" race), there is a huge increase in the rate for the "Deaths" count around the May - June area. You can clearly see the straight "up" slope for the "White" race (a rapid spike). This is most likely when the height of the pandemic was happening and when the "Cases" count grew rapidly as well (although this needs to be verified by looking more closely at the data). 
+
+```{r}
+# writing code that looks at a plot of deaths and cases simultaneously for a specific race in a specific state
+covid_data_count |> 
+  filter(state == "MA") |> 
+  filter(race == "White") |>
+  ggplot(aes(x = date)) + geom_line(aes(y=Cases), color= "black") + geom_line(aes(y=Deaths), color= "red") + labs(y="count") + 
+
+```
+```
 2. Are there any conclusions you can draw?
+It's quite challening to draw ...
 3. What were you not able to do due to not having the R knowledge?
+I was not able to
 4. What other data would be useful to better understand this data?
+
+
